@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-slate-800 bg-slate-50 antialiased font-sans;
+  }
+}
+
+/* Custom styles and animations */
+@keyframes pulseSlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+
+@keyframes glowLed {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.8)); }
+  50% { filter: drop-shadow(0 0 16px rgba(239, 68, 68, 1)); }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 3s infinite ease-in-out;
+}
+
+.led-glow-red {
+  filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.85)) drop-shadow(0 0 20px rgba(239, 68, 68, 0.6));
+}
+
+.led-glow-green {
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.85)) drop-shadow(0 0 20px rgba(34, 197, 94, 0.6));
+}
+
+.led-glow-blue {
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.85)) drop-shadow(0 0 20px rgba(59, 130, 246, 0.6));
+}
+
+.led-glow-yellow {
+  filter: drop-shadow(0 0 10px rgba(234, 179, 8, 0.85)) drop-shadow(0 0 20px rgba(234, 179, 8, 0.6));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print layout for certificates */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-certificate, .printable-certificate * {
+    visibility: visible;
+  }
+  .printable-certificate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: 2px solid #0d9488 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
